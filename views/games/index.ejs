@@ -1,0 +1,23 @@
+<%- include('../partials/head') %>
+
+
+<h1>Game Collection</h1>
+
+<div class="card-container d-flex flex-wrap gap-3">
+  <% foundGames.forEach((game) => { %>
+    <div class="card" style="width: 12rem;">
+      <img src="<%= game.image %>" class="card-img-top" alt="Image of <%= game.title %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= game.title %></h5>
+        <p class="card-text"><%= game.platform %></p>
+        <p class="card-text">Paid: $<%= game.paid %></p>
+        <p class="card-text">Status: <%= game.status %></p>
+        <a href="/games/<%= game._id %>" class="btn btn-primary">View game</a>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+    
+</body>
+</html>
