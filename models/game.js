@@ -6,7 +6,10 @@ const gameSchema = new Schema ({
     platform: String,
     paid: Number,
     status: String,
-    image: String,
+    image: {
+         url: { type: String, required: true},
+         cloudinary_id: { type: String, required: true}
+    },
     user_id: {
         type: Schema.Types.ObjectId,
         ref: 'User',

@@ -3,16 +3,18 @@
 <div class="container mt-4" style="max-width: 700px;">
   <h2 class="text-center mb-3"><%= foundGame.title %></h2>
 
-  <img src="<%= foundGame.image %>" class="img-fluid rounded mb-3" alt="Image of <%= foundGame.title %>">
+<img src="<%= foundGame.image?.url %>" class="img-fluid rounded mb-3" alt="Image of <%= foundGame.title %>">
 
-  <p class="lead"><%= foundGame.status %></p>
-  <p><strong>Price:</strong> <%= foundGame.paid %> BHD</p>
+  <p class="lead">Status: <%= foundGame.status %></p>
+    <p class="lead">Platform: <%= foundGame.platform %></p>
+  <p><strong>Paid:</strong> <%= foundGame.paid %> BHD</p>
 
   <a href="/games" class="btn btn-secondary mt-3">Back to Games</a>
 </div>
 
 <form action="/games/<%= foundGame._id %>?_method=DELETE" method="POST">
   <button type="submit" class="btn btn-danger">Delete</button>
+  <a href="/games/<%= foundGame._id %>/edit">Edit</a>
 </form>
 
 

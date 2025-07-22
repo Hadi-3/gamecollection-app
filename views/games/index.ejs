@@ -6,7 +6,7 @@
 <div class="card-container d-flex flex-wrap gap-3">
   <% foundGames.forEach((game) => { %>
     <div class="card" style="width: 12rem;">
-      <img src="<%= game.image %>" class="card-img-top" alt="Image of <%= game.title %>">
+    <img src="<%= game.image?.url %>" class="card-img-top" alt="Image of <%= game.title %>">
       <div class="card-body">
         <h5 class="card-title"><%= game.title %></h5>
         <p class="card-text"><%= game.platform %></p>
