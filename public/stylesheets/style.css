@@ -38,6 +38,8 @@ h1 {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background-color: rgba(255, 255, 255, 0.04);
   backdrop-filter: blur(6px);
   border: none;
@@ -58,6 +60,9 @@ width: 100%;
 
 .card-body {
   padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .card-title {
@@ -80,6 +85,7 @@ width: 100%;
   border-radius: 8px;
   transition: background-color 0.3s ease;
   display: inline-block;
+    margin-top: auto; 
 }
 
 .card a.btn:hover {
