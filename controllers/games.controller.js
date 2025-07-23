@@ -4,12 +4,20 @@ const express = require('express')
 const router = express.Router()
 const isSignedIn = require('../middleware/is-signed-in')
 const Games = require('../models/game')
+const uploadImage = require('../middleware/handle-upload')
 
 router.get('/new', isSignedIn, (req, res) => {
-    res.render('games/new.ejs')
+    const error = req.query.error || null
+    res.render('games/new.ejs', { error })
 })
 
-router.post('/', isSignedIn, upload.single('image'), async (req, res) => {
+
+router.post('/', isSignedIn, uploadImage, async (req, res) => {
+    if(req.fileUploadError){
+        console.log(req.fileUploadError)
+        res.redirect('/games/new?error=unsupported')
+    }
+
     req.body.user_id = req.session.user._id
 
       if (req.file) {
@@ -24,7 +32,7 @@ router.post('/', isSignedIn, upload.single('image'), async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-const foundGames = await Games.find({ user_id: req.session.user._id });
+  const foundGames = await Games.find({ user_id: req.session.user._id }).sort({ title: 1 });
     res.render('games/index.ejs', { foundGames, user: req.session.user });
 })
 

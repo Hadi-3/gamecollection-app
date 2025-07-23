@@ -1,22 +1,25 @@
 <%- include('../partials/head') %>
 
-<div class="container mt-4" style="max-width: 700px;">
-  <h2 class="text-center mb-3"><%= foundGame.title %></h2>
+<div class="page-background" style="background-image: url('<%= foundGame.image?.url %>');"></div>
 
-<img src="<%= foundGame.image?.url %>" class="img-fluid rounded mb-3" alt="Image of <%= foundGame.title %>">
+<div class="game-details-wrapper">
+  <div class="game-details-card">
+    <h2><%= foundGame.title %></h2>
 
-  <p class="lead">Status: <%= foundGame.status %></p>
-    <p class="lead">Platform: <%= foundGame.platform %></p>
-  <p><strong>Paid:</strong> <%= foundGame.paid %> BHD</p>
+    <img src="<%= foundGame.image?.url %>" alt="Image of <%= foundGame.title %>" class="game-img">
 
-  <a href="/games" class="btn btn-secondary mt-3">Back to Games</a>
+    <div class="game-info">
+      <p class="game-meta">Status: <%= foundGame.status %></p>
+      <p class="game-meta">Platform: <%= foundGame.platform %></p>
+      <p><strong>Paid:</strong> $<%= foundGame.paid %></p>
+
+      <div class="game-actions">
+        <a href="/games" class="btn btn-secondary">Back to Games</a>
+        <a href="/games/<%= foundGame._id %>/edit" class="btn btn-primary">Edit</a>
+        <form action="/games/<%= foundGame._id %>?_method=DELETE" method="POST" style="display:inline;">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
-
-<form action="/games/<%= foundGame._id %>?_method=DELETE" method="POST">
-  <button type="submit" class="btn btn-danger">Delete</button>
-  <a href="/games/<%= foundGame._id %>/edit">Edit</a>
-</form>
-
-
-</body>
-</html>

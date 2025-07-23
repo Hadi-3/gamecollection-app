@@ -1,15 +1,22 @@
 <%- include('./partials/head') %>
+<body>
+<div class="fullscreen-hero">
+  <div class="hero-overlay">
+    <div class="hero-content">
+      <h1>MyGameList</h1>
+      <% if (user) { %>
+        <p>Welcome to the app, <%= user.username %>!</p>
+        <a href="/auth/sign-out" class="btn btn-outline-light me-2">Sign out</a>
+        <a href="/games/new" class="btn btn-primary">Add game</a>
+      <% } else { %>
+        <p>Welcome to the app, guest.</p>
+        <a href="/auth/sign-up" class="btn btn-success">Sign Up</a>
+        <a href="/auth/sign-in" class="btn btn-outline-light">Sign In</a>
+      <% } %>
+    </div>
+  </div>
+</div>
 
-<% if (user) { %>
-<h1>Welcome to the app, <%= user.username %>!</h1>
-<a href="/auth/sign-out">Sign out</a>
-<a href="/games/new">Add game</a>
-<% } else { %>
-<h1>Welcome to the app, guest.</h1>
-<p>
-  <a href="/auth/sign-up">Sign up</a> or <a href="/auth/sign-in">Sign in</a>.
-</p>
-<% } %>
 
 </body>
 </html>

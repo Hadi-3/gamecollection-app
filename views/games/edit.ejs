@@ -1,37 +1,65 @@
 <%- include('../partials/head') %>
 
-    <form action="/games/<%= foundGame._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
-<h2>Edit <%= foundGame.title %></h2>
 
-<div>
-    <label for="title">Title</label>
-    <input type="text" name="title" value="<%=foundGame.title%>" required>
+<div class="add-game-background">
+  <div class="add-game-container">
+    <h2>Edit <%= foundGame.title %></h2>
+
+    <form action="/games/<%= foundGame._id %>?_method=PUT" method="POST" enctype="multipart/form-data" class="add-game-form">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" value="<%= foundGame.title %>" required maxlength="20" />
+      </div>
+
+     <div class="form-group">
+  <label>Platform</label><br />
+   <div class="radio-group">
+  <div>
+    <label><input type="radio" name="platform" value="PC" <%= foundGame.platform === 'PC' ? 'checked' : '' %> required> PC</label>
+  </div>
+  <div>
+    <label><input type="radio" name="platform" value="PlayStation" <%= foundGame.platform === 'PlayStation' ? 'checked' : '' %> required> PlayStation</label>
+  </div>
+  <div>
+    <label><input type="radio" name="platform" value="Xbox" <%= foundGame.platform === 'Xbox' ? 'checked' : '' %> required> Xbox</label>
+  </div>
+  <div>
+    <label><input type="radio" name="platform" value="Nintendo" <%= foundGame.platform === 'Nintendo' ? 'checked' : '' %> required> Nintendo</label>
+  </div>
+</div>
 </div>
 
-<div>
-    <label for="platform">Platform</label>
-    <input type="text" name="platform" value="<%=foundGame.platform%>" required>
+
+      <div class="form-group">
+        <label for="paid">Paid</label>
+        <input type="text" name="paid" id="paid" value="<%= foundGame.paid %>" required maxlength="4" />
+      </div>
+
+    <div class="form-group">
+  <label>Status</label><br />
+   <div class="radio-group">
+  <div>
+    <label><input type="radio" name="status" value="Completed" <%= foundGame.status === 'Completed' ? 'checked' : '' %> required> Completed</label>
+  </div>
+  <div>
+    <label><input type="radio" name="status" value="Playing" <%= foundGame.status === 'Playing' ? 'checked' : '' %> required> Playing</label>
+  </div>
+  <div>
+    <label><input type="radio" name="status" value="Wishlist" <%= foundGame.status === 'Not Started' ? 'checked' : '' %> required> Not Started</label>
+  </div>
+</div>
 </div>
 
-<div>
-    <label for="paid">Paid</label>
-    <input type="text" name="paid" value="<%=foundGame.paid%>" required>
-</div>
 
-<div>
-    <label for="status">Status</label>
-    <input type="text" name="status" value="<%=foundGame.status%>" required>
-</div>
+      <div class="form-group">
+        <label for="image">Upload New Image (optional)</label>
+        <input type="file" name="image" id="image" accept="image/*" />
+      </div>
 
-<div>
-    <label for="image">Image URL</label>
-    <input type="file" name="image" value="<%=foundGame.image%>" required>
-</div>
-
-<button type="submit">Update Game</button>
-
-
-
+      <button type="submit" class="submit-btn">Update Game</button>
     </form>
+  </div>
+</div>
+
 </body>
 </html>
