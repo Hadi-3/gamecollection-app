@@ -57,7 +57,7 @@ Built with Node.js, Express, MongoDB, and EJS.
 
 ## 📚 Attributions
 
-- [Bootstrap for UI components](<(https://getbootstrap.com)>)
+- [Bootstrap for UI components](https://getbootstrap.com)
 - [Cloudinary for image hosting](https://cloudinary.com)
 
 ---
