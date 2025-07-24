@@ -478,4 +478,10 @@ button[type="submit"]:hover {
   margin-bottom: 1.2rem;
 }
 
+.image-container {
+  position: relative;
+}
+
+
+
 

@@ -11,10 +11,8 @@ router.get('/new', isSignedIn, (req, res) => {
     res.render('games/new.ejs', { error })
 })
 
-
 router.post('/', isSignedIn, uploadImage, async (req, res) => {
     if(req.fileUploadError){
-        console.log(req.fileUploadError)
         res.redirect('/games/new?error=unsupported')
     }
 
@@ -31,10 +29,12 @@ router.post('/', isSignedIn, uploadImage, async (req, res) => {
  
 })
 
+
 router.get('/', async (req, res) => {
   const foundGames = await Games.find({ user_id: req.session.user._id }).sort({ title: 1 });
     res.render('games/index.ejs', { foundGames, user: req.session.user });
 })
+
 
 router.get('/:gameId', async (req, res) => {
     const foundGame = await Games.findById(req.params.gameId).populate('user_id')
@@ -52,10 +52,12 @@ router.delete('/:gameId', isSignedIn, async (req, res) => {
     res.redirect('/games');
 });
 
+
 router.get('/:gameId/edit', isSignedIn, async (req, res) => {
     const foundGame = await Games.findById(req.params.gameId).populate('user_id')
     res.render('games/edit.ejs', { foundGame })
 })
+
 
 router.put('/:gameId', isSignedIn, upload.single('image'),  async (req, res) => {
     const foundGame = await Games.findById(req.params.gameId).populate('user_id')
